@@ -102,7 +102,7 @@
             if (this.follows[i].equals(null)) continue;
             for (int j = 0 ; j < other.follows.length ; j++) {
                 if (other.follows[j].equals(null)) continue;
-                this.follows[j] = this.follows[j].toLowerCase[j];
+                this.follows[j] = this.follows[j].toLowerCase();
                 if (this.follows[i].equals(other.follows[j])) {
                     count++;
                     break;
