@@ -55,21 +55,12 @@
      *  If this user already follows the given name, or if the follows list is full, does nothing and returns false; */
     public boolean addFollowee(String name) {
 
-        name = name.toLowerCase();
-        if (name.length() == 0){
+        if (follows(name) || this.fCount == this.maxfCount) {
             return false;
         }
-        for (int i = 0 ; i < follows.length ; i++ ){
-            if (follows[i].equals(name) && follows[i] != null) {
-                return false;        
-            }
-            if (!follows[i].equals(name) && follows[i].isEmpty()) {
-                follows[i] = name;
-                fCount++;
-                return true;
-            }
-        }
-        return false;
+        this.follows[this.fCount] = name;
+        this.fCount++;
+        return true;
     }
 
     /** Removes the given name from the follows list of this user. If successful, returns true.
