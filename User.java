@@ -58,8 +58,8 @@
         if (follows(name) || this.fCount == this.maxfCount) {
             return false;
         }
-        this.follows[this.fCount] = name;
-        this.fCount++;
+        follows[fCount] = name;
+        fCount++;
         return true;
     }
 
@@ -85,20 +85,14 @@
     public int countMutual(User other) {
          int count = 0;
 
-         for (int i = 0 ; i < this.follows.length ; i++) {
-            this.follows[i] = this.follows[i].toLowerCase();
-            if (this.follows[i].equals(null)) continue;
-            for (int j = 0 ; j < other.follows.length ; j++) {
-                if (other.follows[j].equals(null)) continue;
-                this.follows[j] = this.follows[j].toLowerCase();
-                if (this.follows[i].equals(other.follows[j])) {
-                    count++;
-                    break;
-                }
-            }
+         for (int i = 0 ; i < this.fCount ; i++) {
+             if (other.follows(this.follows[i])) {
+                 count++;
+             }
          }
-        return count;
-    }
+         return count;
+     }
+    
 
     /** Checks is this user is a friend of the other user.
      *  (if two users follow each other, they are said to be "friends.") */
